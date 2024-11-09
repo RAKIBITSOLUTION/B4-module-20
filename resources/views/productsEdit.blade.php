@@ -1,18 +1,16 @@
 @extends('layout')
 
 @section('content')
-<h1>Create A New Product:</h>
+
+<h1>Product Edit Page</h>
 
 <form>
-        <label>Product ID:</label><br>
-        <input type="text" id="name" name="product_id" ><br>
-
+    
         <label>Product Name:</label><br>
         <input type="text" id="name" name="name" ><br>
         
         <label>Product Discription:</label><br>
         <textarea name="discription" rows="5" cols="25">
-        
         </textarea><br>
 
         <label>Product Price:</label><br>
@@ -29,5 +27,6 @@
         <input type="submit" value="Submit">
 
     </form>
+
 
 @endsection
