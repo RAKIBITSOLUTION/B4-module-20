@@ -7,23 +7,26 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
 
-//Page Route
+//-------------------------Page Route------------------------------
+   function productListPage (Request $request){
+      return view("show");
+   }
    function productCreatePage (Request $request){
       return view("create");
    }
-   function singleProductShowPage (Request $request){
-      return view("show");
-   }
+
    function productEditPage (Request $request){
       return view("edit");
    }
 
-   //Action Route
+   // ---------------------- Action Route ----------------------------
    function productList (Request $request){
       return Product::get();
    }
-   function productCreate (Request $request){
-      return Product::create([
+   function productCreate (Request $request)
+   {
+     
+       return Product::create([
       'product_id'=> $request->input('product_id'),
       'name'=>$request->input('name'),
       'description'=>$request->input('description'),

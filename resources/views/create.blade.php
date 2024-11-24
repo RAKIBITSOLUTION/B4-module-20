@@ -3,31 +3,40 @@
 @section('content')
 <h1>Create A New Product:</h>
 
-<form>
-        <label>Product ID:</label><br>
-        <input type="text" id="name" name="product_id" ><br>
+<div>
+    <form>
+        <label class="form-label">Product ID:</label>
+        <input type="text" class="form-control" id="productName">
 
-        <label>Product Name:</label><br>
-        <input type="text" id="name" name="name" ><br>
+        <label class="form-label">Product Name:</label>
+        <input type="text" class="form-control" id="productName" >
         
-        <label>Product Discription:</label><br>
-        <textarea name="discription" rows="5" cols="25">
-        
+        <label class="form-label">Product Discription:</label><br>
+        <textarea class="form-control" rows="5" cols="15"> 
         </textarea><br>
 
-        <label>Product Price:</label><br>
-        <input type="number" id="name" name="Price" ><br>
+        <label class="form-label">Product Price:</label><br>
+        <input type="number" id="name" class="form-control">
 
-        <label>Product Stock:</label><br>
-        <input type="number" id="name" name="stock" ><br>
+        <label class="form-label">Product Stock:</label><br>
+        <input type="number" id="name" class="form-control">
       
+                          
         <div>
-			<label for="photo">Choose Photo:</label>
-			<input type="file" name="photo" id="photo">
-		</div> </br>
-                   
+        <br/>
+        <img class="w-15" id="newImg" src="{{asset('images/default.jpg')}}"/>
+        <br/>
+
+        <label class="form-label">Image</label>
+        <input oninput="newImg.src=window.URL.createObjectURL(this.files[0])" type="file" class="form-control" id="productImg">
+        </div>
+
+    <div>
         <input type="submit" value="Submit">
+    </div>
 
     </form>
+</div>
+        
 
 @endsection
