@@ -1,6 +1,6 @@
 @extends('index')
 
-@section('content')
+@section(section: 'content')
 
 <h1>Product Show:</h>
 
@@ -11,13 +11,12 @@
 
     <div id="loader" class="loading d-none">
     </div>
-    
             <div class="container">
                 <div class="row">
                     <table>
                         <thead>
                             <th>  Name</th>
-                            <th>  Descrition</th>
+                            <th>  Description</th>
                             <th>  Price</th>
                             <th>  Stock</th>
                             <th>  Image</th>
@@ -34,9 +33,11 @@
   
 
         <script>
+
+            // Get Data
             async function getList(){
             let res=await axios.get("/products");
-            res.data.forEach(function (item,index){
+            res.data.forEach(function (item){
                     document.getElementById('itemList').innerHTML+=(`
                         <tr>
                             <td>${item['name']}</td>
@@ -44,16 +45,34 @@
                             <td>${item['Price']}</td>
                             <td>${item['stock']}</td>
                             <td>${item['image']}</td>
-                            <td><button>Edit</button></td>
-                            <td><button>Delete</button></td>
-                            
+                            <td><button onclick="goUpdatePage('${item['id']}')" >Edit</button></td>
+                            <td><button onclick="deleteItem('${item['id']}')">Delete</button></td>
                         </tr>
                         `)
-
                 })
             }
 
             getList()
+
+
+
+        //Delete Data 
+        async function deleteItem(id){
+                await axios.delete(`/products/${id}`);
+                document.getElementById('itemList').innerHTML=""
+                getList();
+            }
+
+
+        //Edit Data
+        function goUpdatePage(id){
+            window.location=`/products/${id}/edit`
+            
+
+
+            
+               
+            }
 
         </script>
 
